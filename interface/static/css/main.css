@@ -36,9 +36,45 @@ html, body {
 
 /* Display  */
 #display {
-    background-color: red;
+    display: flex;
+    flex-direction: column;
+
     width: 70%;
     height: 100%;
+}
+
+#products-window {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+    flex-grow: 1;
+    
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 0 10px 20px 10px;
+    padding: 10px;
+}
+
+.product {
+    max-width: 225px;
+    margin: 5px;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    max-height: 60px;
+    text-align: left;
+    font-weight: 700;
+    overflow: hidden;
+    color: #333;
+}
+
+.product-image {
+    max-width: 100%;
+    padding: 5px;
 }
 
 /* Chat Box */
@@ -66,7 +102,8 @@ html, body {
     max-width: 60%;
     padding: 5px;
     margin: 5px;
-    background-color: green;
+    color: white;
+    background-color: #0471af;
     border-radius: 5px
 }
 
@@ -76,9 +113,26 @@ html, body {
 }
 
 .chat-input {
+    display: flex;
+    flex-direction: row;
+
     height: 10%;
     padding: 5px;
     background-color: #004B8F;
+}
+
+.chat-input > textarea {
+    flex-grow: 1;
+}
+
+.chat-input > button {
+    max-height: 50px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.chat-input > button:hover {
+    background-color: #F2F2F2;
 }
 
 /* background-color: #0471af; */
