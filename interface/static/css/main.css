@@ -1,0 +1,84 @@
+html, body {
+    height: 100%;
+}
+
+#page {
+    /* flex parent */
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    margin: 0 10% 0 10%;
+}
+
+/* Header  */
+#header {
+    height: 100px;
+    margin: 5px 20px;
+}
+
+.lowes-logo {
+    height: 100%;
+}
+
+/* App */
+#app {
+    /* flex parent */
+    display: flex;
+    flex-direction: ltr;
+    justify-content: space-evenly;
+    
+    /* flex child */
+    flex-grow: 1;
+    
+    margin-bottom: 20px;
+}
+
+/* Display  */
+#display {
+    background-color: red;
+    width: 70%;
+    height: 100%;
+}
+
+/* Chat Box */
+#chat {
+    display: flex;
+    flex-direction: column;
+    
+    width: 30%;
+    height: 100%;
+}
+
+.chat-log {
+    display: flex;
+    flex-direction: column-reverse;
+
+    flex-grow: 1;
+    
+    overflow-y: auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 0 10px 20px 10px;
+}
+
+.chat-log > div {
+    max-width: 60%;
+    padding: 5px;
+    margin: 5px;
+    background-color: green;
+    border-radius: 5px
+}
+
+.lowes-padoga {
+    width: 100%;
+    height: 100%;
+}
+
+.chat-input {
+    height: 10%;
+    padding: 5px;
+    background-color: #004B8F;
+}
+
+/* background-color: #0471af; */
