@@ -83,6 +83,10 @@
             ];
 
             var addMessageToLog = function(message, author) {
+                if (message == '') {
+                    return;
+                }
+
                 var msg_count = messageHistory.length;
                 var message = {
                     id: msg_count,
@@ -91,12 +95,18 @@
                     datetime: 'December 25, 1995 23:15:20'
                 }
                 messageHistory.push(message);
+                scrollChatToBottom();
             }
 
             var submitMessage = function() {
                 var message_element = document.getElementById('chat-input');
                 addMessageToLog(message_element.value, 'author-user');
                 message_element.value = '';
+            }
+
+            var scrollChatToBottom = function() {
+                var chat_log = document.getElementById('chat-log');
+                chat_log.scrollTop = chat_log.scrollHeight;
             }
 
             Vue.component('message-item', {
@@ -111,7 +121,8 @@
                 el: '#chat-log',
                 data: {
                     messages: messageHistory
-                }
+                },
+                updated: scrollChatToBottom
             })
         </script>
     </body>
