@@ -87,7 +87,7 @@ html, body {
     height: 100%;
 }
 
-.chat-log {
+#chat-log {
     display: flex;
     flex-direction: column-reverse;
 
@@ -98,13 +98,29 @@ html, body {
     margin: 0 10px 20px 10px;
 }
 
-.chat-log > div {
+#chat-log > .message {
     max-width: 60%;
     padding: 5px;
     margin: 5px;
     color: white;
-    background-color: #0471af;
     border-radius: 5px
+}
+
+#chat-log > .author-other {
+    margin-right: auto;
+    background-color: #004B8F;
+    border-top-left-radius: 0px;
+}
+
+#chat-log > .author-user {
+    margin-left: auto;
+    background-color: #0471AF;
+    border-bottom-right-radius: 0px;
+}
+
+.message-datetime {
+    color: #DDD;
+    font-size: 0.8em;
 }
 
 .lowes-padoga {
@@ -135,4 +151,4 @@ html, body {
     background-color: #F2F2F2;
 }
 
-/* background-color: #0471af; */
+/* background-color: #0471AF; */
