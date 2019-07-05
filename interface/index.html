@@ -62,9 +62,9 @@
                         ></message-item>
                     </div>
                     <img class="lowes-pagoda" src="https://www.lowescdn.com/images/ui/pagoda.svg" alt="Lowe's pagoda" \>
-                    <div class="chat-input">
-                        <textarea >Type here...</textarea>
-                        <button>Submit</button>
+                    <div id="chat-input-box">
+                        <textarea id="chat-input">Type here...</textarea>
+                        <button onclick="submitMessage()">Submit</button>
                     </div>
                 </div>
             </div>
@@ -72,6 +72,33 @@
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script type="text/javascript">
+            var messageHistory = [
+                { id: 0, text: 'Yes, can I have a dozen red roses please.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' },
+                { id: 1, text: 'Oh hai Johnny, I didn\'t know it was you.', author: 'author-other', datetime: 'December 25, 1995 23:15:20' },
+                { id: 2, text: 'That\'s me. How much is it?', author: 'author-user', datetime: 'December 25, 1995 23:15:20' },
+                { id: 3, text: 'That\'ll be $18.', author: 'author-other', datetime: 'December 25, 1995 23:15:20' },
+                { id: 4, text: 'Here you go, keep the change, hai doggy.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' },
+                { id: 5, text: 'You\'re my favorite customer.', author: 'author-other', datetime: 'December 25, 1995 23:15:20' },
+                { id: 6, text: 'Thanks a lot. Bye.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' }
+            ];
+
+            var addMessageToLog = function(message, author) {
+                var msg_count = messageHistory.length;
+                var message = {
+                    id: msg_count,
+                    text: message,
+                    author: author,
+                    datetime: 'December 25, 1995 23:15:20'
+                }
+                messageHistory.push(message);
+            }
+
+            var submitMessage = function() {
+                var message_element = document.getElementById('chat-input');
+                addMessageToLog(message_element.value, 'author-user');
+                message_element.value = '';
+            }
+
             Vue.component('message-item', {
                 props: ['message'],
                 template: '<div class="message">' +
@@ -83,19 +110,9 @@
             var chat = new Vue({
                 el: '#chat-log',
                 data: {
-                    messages: [
-                        { id: 0, text: 'Yes, can I have a dozen red roses please.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' },
-                        { id: 1, text: 'Oh hai Johnny, I didn\'t know it was you.', author: 'author-other', datetime: 'December 25, 1995 23:15:20' },
-                        { id: 2, text: 'That\'s me. How much is it?', author: 'author-user', datetime: 'December 25, 1995 23:15:20' },
-                        { id: 3, text: 'That\'ll be $18.', author: 'author-other', datetime: 'December 25, 1995 23:15:20' },
-                        { id: 4, text: 'Here you go, keep the change, hai doggy.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' },
-                        { id: 5, text: 'You\'re my favorite customer.', author: 'author-other', datetime: 'December 25, 1995 23:15:20' },
-                        { id: 6, text: 'Thanks a lot. Bye.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' }
-                    ]
+                    messages: messageHistory
                 }
             })
-
-            console.log(chat);
         </script>
     </body>
 </html>

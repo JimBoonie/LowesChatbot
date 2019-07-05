@@ -128,7 +128,7 @@ html, body {
     height: 100%;
 }
 
-.chat-input {
+#chat-input-box {
     display: flex;
     flex-direction: row;
 
@@ -137,11 +137,11 @@ html, body {
     background-color: #004B8F;
 }
 
-.chat-input > textarea {
+#chat-input-box > textarea {
     flex-grow: 1;
 }
 
-.chat-input > button {
+#chat-input-box > button {
     max-height: 50px;
     margin: 5px;
     border-radius: 5px;
