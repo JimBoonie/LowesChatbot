@@ -20,36 +20,11 @@
             <div id="app">
                 <div id="display">
                     <div id="products-window">
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
+                        <product-card
+                            v-for="product in products"
+                            v-bind:product="product"
+                            v-bind:key="product.id"
+                        ></product-card>
                     </div>
                 </div>
                 <div id="chat">
@@ -71,6 +46,33 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script type="text/javascript">
+            var productsList = [
+                { id: 0, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 1, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 2, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 3, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 4, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 5, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 6, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}
+            ];
+
+            Vue.component('product-card', {
+                props: ['product'],
+                template: '<div class="product">' +
+                          '    <img class="product-image" :src="product.src" alt="Product Image" \>' +
+                          '    <h6 class="product-title">{{ product.title }}</h6>' +
+                          '    <span class="product-price">{{ product.price }}</span>' +
+                          '</div>'
+            });
+
+            var products_window = new Vue({
+                el: '#products-window',
+                data: {
+                    products: productsList
+                }
+            })
+        </script>
         <script type="text/javascript">
             var messageHistory = [
                 { id: 0, text: 'Yes, can I have a dozen red roses please.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' },
