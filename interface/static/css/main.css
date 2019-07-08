@@ -92,6 +92,7 @@ html, body {
     flex-direction: column-reverse;
 
     height: 80%;
+    overflow-x: hidden;
     overflow-y: auto;
     border: 2px solid black;
     border-radius: 5px;
@@ -147,7 +148,7 @@ html, body {
     border-radius: 5px;
 }
 
-.chat-input > button:hover {
+#chat-input-box > button:hover {
     background-color: #F2F2F2;
 }
 
