@@ -15,57 +15,116 @@
     <body>
         <div id="page">
             <div id="header">
-                <img class="lowes-logo" src="https://www.lowescdn.com/images/ui/LowesLogo_DT.svg" alt="Lowe's logo" \>
+                <img class="lowes-logo" src="static/svg/LowesLogo_DT.svg" alt="Lowe's logo" \>
             </div>
             <div id="app">
                 <div id="display">
                     <div id="products-window">
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
-                        <div class="product">
-                            <img class="product-image" src="https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg" \>
-                            <h6 class="product-title">Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR</h6>
-                            <span class="product-price">$649.00</span>
-                        </div>
+                        <product-card
+                            v-for="product in products"
+                            v-bind:product="product"
+                            v-bind:key="product.id"
+                        ></product-card>
                     </div>
                 </div>
                 <div id="chat">
-                    <div class="chat-log">
-                        <div>Hello???</div>
-                        <div>You liking the new chat features?</div>
-                        <div>How is it going?</div>
+                    <div id="chat-log">
+                        <message-item
+                            v-for="msg in messages.slice().reverse()"
+                            v-bind:message="msg"
+                            v-bind:class="msg.author"
+                            v-bind:key="msg.id"
+                        ></message-item>
                     </div>
-                    <img class="lowes-pagoda" src="https://www.lowescdn.com/images/ui/pagoda.svg" alt="Lowe's pagoda" \>
-                    <div class="chat-input">
-                        <textarea >Type here...</textarea>
-                        <button>Submit</button>
+                    <img class="lowes-pagoda" src="static/svg/pagoda.svg" alt="Lowe's pagoda" \>
+                    <div id="chat-input-box">
+                        <textarea id="chat-input">Type here...</textarea>
+                        <button onclick="submitMessage()">Submit</button>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="" async defer></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script type="text/javascript">
+            var productsList = [
+                { id: 0, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 1, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 2, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 3, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 4, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 5, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
+                { id: 6, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}
+            ];
+
+            Vue.component('product-card', {
+                props: ['product'],
+                template: '<div class="product">' +
+                          '    <img class="product-image" :src="product.src" alt="Product Image" \>' +
+                          '    <h6 class="product-title">{{ product.title }}</h6>' +
+                          '    <span class="product-price">{{ product.price }}</span>' +
+                          '</div>'
+            });
+
+            var products_window = new Vue({
+                el: '#products-window',
+                data: {
+                    products: productsList
+                }
+            })
+        </script>
+        <script type="text/javascript">
+            var messageHistory = [
+                { id: 0, text: 'Yes, can I have a dozen red roses please.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' },
+                { id: 1, text: 'Oh hai Johnny, I didn\'t know it was you.', author: 'author-other', datetime: 'December 25, 1995 23:15:20' },
+                { id: 2, text: 'That\'s me. How much is it?', author: 'author-user', datetime: 'December 25, 1995 23:15:20' },
+                { id: 3, text: 'That\'ll be $18.', author: 'author-other', datetime: 'December 25, 1995 23:15:20' },
+                { id: 4, text: 'Here you go, keep the change, hai doggy.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' },
+                { id: 5, text: 'You\'re my favorite customer.', author: 'author-other', datetime: 'December 25, 1995 23:15:20' },
+                { id: 6, text: 'Thanks a lot. Bye.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' }
+            ];
+
+            var addMessageToLog = function(message, author) {
+                if (message == '') {
+                    return;
+                }
+
+                var msg_count = messageHistory.length;
+                var message = {
+                    id: msg_count,
+                    text: message,
+                    author: author,
+                    datetime: 'December 25, 1995 23:15:20'
+                }
+                messageHistory.push(message);
+            }
+
+            var submitMessage = function() {
+                var message_element = document.getElementById('chat-input');
+                addMessageToLog(message_element.value, 'author-user');
+                message_element.value = '';
+            }
+
+            var scrollChatToBottom = function() {
+                var chat_log = document.getElementById('chat-log');
+                chat_log.scrollTop = chat_log.scrollHeight;
+            }
+
+            Vue.component('message-item', {
+                props: ['message'],
+                template: '<div class="message">' +
+                              '<div class="message-content">{{ message.text }}</div>' + 
+                              '<div class="message-datetime">{{ message.datetime }}</div>' +
+                          '</div>'
+            })
+
+            var chat = new Vue({
+                el: '#chat-log',
+                data: {
+                    messages: messageHistory
+                },
+                updated: scrollChatToBottom
+            })
+        </script>
     </body>
 </html>
