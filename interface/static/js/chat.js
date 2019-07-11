@@ -25,6 +25,7 @@ var submitMessage = function() {
         data: { text: message_text },
         success: function(res) {
             addMessageToLog(res.text, 'author-other');
+            updateProducts(res.products);
         },
         error: function(err) {
             console.log(`Error: ${err}`);
