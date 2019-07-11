@@ -1,0 +1,27 @@
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "description": "Product recommendation chatbot for Lowe's products",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@ssh.dev.azure.com:v3/lowes-chatbot-hackathon/lowes-chatbot-hackathon/interface"
+  },
+  "keywords": [
+    "hackathon",
+    "chatbot",
+    "lowes"
+  ],
+  "author": "Mason McGough",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}

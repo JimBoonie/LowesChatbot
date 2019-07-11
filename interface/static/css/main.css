@@ -78,6 +78,7 @@ html, body {
 #chat {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     
     width: 30%;
     height: 100%;
@@ -123,20 +124,31 @@ html, body {
 }
 
 .lowes-pagoda {
+    flex-grow: 0;
+    flex-shrink: 0; 
     width: 100%;
+}
+
+#chat-user-panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20%;
 }
 
 #chat-input-box {
     display: flex;
     flex-direction: row;
 
-    height: 10%;
+    flex-grow: 1;
+
     padding: 5px;
     background-color: #004B8F;
 }
 
 #chat-input-box > textarea {
     flex-grow: 1;
+    border-radius: 5px;
 }
 
 #chat-input-box > button {
