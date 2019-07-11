@@ -15,8 +15,21 @@ var addMessageToLog = function(message, author) {
 
 var submitMessage = function() {
     var message_element = document.getElementById('chat-input');
-    addMessageToLog(message_element.value, 'author-user');
+    var message_text = message_element.value;
+    addMessageToLog(message_text, 'author-user');
     message_element.value = '';
+
+    $.ajax({
+        url: 'submit-message',
+        type: 'POST',
+        data: { text: message_text },
+        success: function(res) {
+            addMessageToLog(res.text, 'author-other');
+        },
+        error: function(err) {
+            console.log(`Error: ${err}`);
+        }
+    });
 }
 
 var scrollChatToBottom = function() {
