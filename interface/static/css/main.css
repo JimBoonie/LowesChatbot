@@ -98,7 +98,7 @@ html, body {
     margin: 0 10px 20px 10px;
 }
 
-#chat-log > .message {
+.message {
     max-width: 60%;
     padding: 5px;
     margin: 5px;
@@ -106,13 +106,13 @@ html, body {
     border-radius: 5px
 }
 
-#chat-log > .author-other {
+.author-other {
     margin-right: auto;
     background-color: #004B8F;
     border-top-left-radius: 0px;
 }
 
-#chat-log > .author-user {
+.author-user {
     margin-left: auto;
     background-color: #0471AF;
     border-bottom-right-radius: 0px;
@@ -146,12 +146,12 @@ html, body {
     background-color: #004B8F;
 }
 
-#chat-input-box > textarea {
+#chat-input {
     flex-grow: 1;
     border-radius: 5px;
 }
 
-#chat-input-box > button {
+#chat-button {
     max-height: 50px;
     margin: 5px;
     border-radius: 5px;
@@ -166,3 +166,17 @@ html, body {
 /* blue: #0471AF; */
 /* dark: #004B8F */
 /* darkest: #242B4A */
+
+.fade-message-enter-active, .fade-message-leave-active {
+    transition: opacity .5s;
+}
+.fade-message-enter, .fade-message-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+
+.fade-product-enter-active, .fade-product-leave-active {
+    transition: opacity .5s;
+}
+.fade-product-enter, .fade-product-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}

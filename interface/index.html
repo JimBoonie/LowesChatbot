@@ -38,28 +38,28 @@
             </div>
             <div id="app">
                 <div id="display">
-                    <div id="products-window">
+                    <transition-group name="fade-product" tag="div" id="products-window">
                         <product-card
                             v-for="product in products"
                             v-bind:product="product"
                             v-bind:key="product.id"
                         ></product-card>
-                    </div>
+                    </transition-group>
                 </div>
                 <div id="chat">
-                    <div id="chat-log">
+                    <transition-group name="fade-message" tag="div" id="chat-log">
                         <message-item
-                            v-for="msg in messages.slice().reverse()"
+                            v-for="msg in messages"
                             v-bind:message="msg"
                             v-bind:class="msg.author"
                             v-bind:key="msg.id"
                         ></message-item>
-                    </div>
+                    </transition-group>
                     <div id="chat-user-panel">
                         <img class="lowes-pagoda" src="static/svg/pagoda.svg" alt="Lowe's pagoda" \>
                         <div id="chat-input-box">
                             <textarea id="chat-input" placeholder="Start a conversation!"></textarea>
-                            <button onclick="submitMessage()">Submit</button>
+                            <button id="chat-button" onclick="submitMessage()">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -70,5 +70,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="static/js/products.js" type="text/javascript"></script>
         <script src="static/js/chat.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var chat_input = document.getElementById('chat-input');
+            var chat_button = document.getElementById('chat-button');
+
+            chat_input.addEventListener('keyup', function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    chat_button.click();
+                }
+            })
+        </script>
     </body>
 </html>

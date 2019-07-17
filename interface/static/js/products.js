@@ -9,7 +9,8 @@ var updateProducts = function(products) {
 
 Vue.component('product-card', {
     props: ['product'],
-    template: '<div class="product">' +
+    template: 
+    '<div class="product">' +
     '    <img class="product-image" :src="product.src" alt="Product Image" \>' +
     '    <h6 class="product-title">{{ product.title }}</h6>' +
     '    <span class="product-price">{{ product.price }}</span>' +
