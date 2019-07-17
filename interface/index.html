@@ -48,12 +48,14 @@
                 </div>
                 <div id="chat">
                     <div id="chat-log">
-                        <message-item
-                            v-for="msg in messages.slice().reverse()"
-                            v-bind:message="msg"
-                            v-bind:class="msg.author"
-                            v-bind:key="msg.id"
-                        ></message-item>
+                        <transition-group name="fade-message" tag="span">
+                            <message-item
+                                v-for="msg in messages"
+                                v-bind:message="msg"
+                                v-bind:class="msg.author"
+                                v-bind:key="msg.id"
+                            ></message-item>
+                        </transition-group>
                     </div>
                     <div id="chat-user-panel">
                         <img class="lowes-pagoda" src="static/svg/pagoda.svg" alt="Lowe's pagoda" \>

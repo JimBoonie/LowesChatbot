@@ -40,9 +40,10 @@ var scrollChatToBottom = function() {
 
 Vue.component('message-item', {
     props: ['message'],
-    template: '<div class="message">' +
-    '<div class="message-content">{{ message.text }}</div>' + 
-    '<div class="message-datetime">{{ message.datetime }}</div>' +
+    template: 
+    '<div class="message">' +
+    '    <div class="message-content">{{ message.text }}</div>' + 
+    '    <div class="message-datetime">{{ message.datetime }}</div>' +
     '</div>'
 })
 
