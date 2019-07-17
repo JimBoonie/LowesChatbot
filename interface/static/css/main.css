@@ -146,12 +146,12 @@ html, body {
     background-color: #004B8F;
 }
 
-#chat-input-box > textarea {
+#chat-input {
     flex-grow: 1;
     border-radius: 5px;
 }
 
-#chat-input-box > button {
+#chat-button {
     max-height: 50px;
     margin: 5px;
     border-radius: 5px;
