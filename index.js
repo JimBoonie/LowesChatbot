@@ -13,8 +13,9 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/interface/index.html'));
 });
 app.post('/submit-message', function(req, res) {
+    console.log(req.body.text);
     var data = {
-        text: 'Hi there!',
+        text: 'Hi, ' + req.body.text + '!',
         products: [
             { id: 0, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
             { id: 1, title: 'Samsung 4.5-cu ft High Efficiency Stackable Front-Load Washer (Merlot) ENERGY STAR', src: 'https://mobileimages.lowes.com/product/converted/887276/887276250946lg.jpg', price: '$649.00'}, 
@@ -28,4 +29,4 @@ app.post('/submit-message', function(req, res) {
     res.send(data);
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}!`))
+app.listen(port, () => console.log(`Listening at address http://127.0.0.1:${port}/`))
