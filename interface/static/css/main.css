@@ -173,3 +173,10 @@ html, body {
 .fade-message-enter, .fade-message-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
 }
+
+.fade-product-enter-active, .fade-product-leave-active {
+    transition: opacity .5s;
+}
+.fade-product-enter, .fade-product-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}

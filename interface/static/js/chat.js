@@ -10,7 +10,7 @@ var addMessageToLog = function(message, author) {
         author: author,
         datetime: 'December 25, 1995 23:15:20'
     }
-    messageHistory.push(message);
+    messageHistory.unshift(message);
 }
 
 var submitMessage = function() {
@@ -55,7 +55,7 @@ var messageHistory = [
     { id: 4, text: 'Here you go, keep the change, hai doggy.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' },
     { id: 5, text: 'You\'re my favorite customer.', author: 'author-other', datetime: 'December 25, 1995 23:15:20' },
     { id: 6, text: 'Thanks a lot. Bye.', author: 'author-user', datetime: 'December 25, 1995 23:15:20' }
-];
+].slice().reverse();
 
 var chat = new Vue({
     el: '#chat-log',
